@@ -1,6 +1,10 @@
 import pytest
 import selenium.webdriver
 import json
+from pages.home_page import HomePage
+from pages.login_page import LoginPage
+from pages.sales_page import SalesPage
+from pages.accounts_page import AccountsPage
 
 
 @pytest.fixture(scope="session")
@@ -35,6 +39,18 @@ def browser(config):
     yield b
 
     b.quit()
+
+
+@pytest.fixture
+def pages(browser):
+    pages = {
+        "login_page": LoginPage(browser),
+        "home_page": HomePage(browser),
+        "sales_page": SalesPage(browser),
+        "accounts_page": AccountsPage(browser)
+    }
+
+    return pages
 
 
 @pytest.fixture(scope="session")

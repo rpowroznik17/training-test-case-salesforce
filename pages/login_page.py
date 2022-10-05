@@ -1,7 +1,8 @@
+from pages.template_page import TemplatePage
 from selenium.webdriver.common.by import By
 
 
-class LoginPage:
+class LoginPage(TemplatePage):
 
     # URL
     URL = "https://login.salesforce.com"
@@ -12,13 +13,10 @@ class LoginPage:
     LOGIN_BTN = (By.ID, "Login")
 
     def __init__(self, browser):
-        self.browser = browser
+        super().__init__(browser)
 
     def load(self):
         self.browser.get(self.URL)
-
-    def get_title(self):
-        return self.browser.title
 
     def fill_credentials(self, username, password):
         username_field = self.browser.find_element(*self.USERNAME)
