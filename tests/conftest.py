@@ -5,6 +5,8 @@ from pages.home_page import HomePage
 from pages.login_page import LoginPage
 from pages.sales_page import SalesPage
 from pages.accounts_page import AccountsPage
+from pages.account_page import AccountPage
+from pages.edit_account_page import EditAccountPage
 
 
 @pytest.fixture(scope="session")
@@ -47,7 +49,9 @@ def pages(browser):
         "login_page": LoginPage(browser),
         "home_page": HomePage(browser),
         "sales_page": SalesPage(browser),
-        "accounts_page": AccountsPage(browser)
+        "accounts_page": AccountsPage(browser),
+        "account_page": AccountPage(browser),
+        "edit_account_page": EditAccountPage(browser)
     }
 
     return pages
